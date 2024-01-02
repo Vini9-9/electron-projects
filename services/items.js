@@ -1,3 +1,9 @@
+exports.storage = JSON.parse(localStorage.getItem('readit-items')) || [];
+
+exports.save = () => {
+    localStorage.setItem('readit-items', JSON.stringify(this.storage));
+}
+
 let items = document.getElementById('items');
 
 exports.addItem = item => {
@@ -12,4 +18,6 @@ exports.addItem = item => {
     `;
 
     items.appendChild(itemNode);
+    this.storage.push(item);
+    this.save();
 }
