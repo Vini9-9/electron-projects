@@ -4,6 +4,11 @@ exports.save = () => {
     localStorage.setItem('readit-items', JSON.stringify(this.storage));
 }
 
+exports.addItemToStorage = (item) => {
+    this.storage.push(item);
+    this.save();
+}
+
 let items = document.getElementById('items');
 
 exports.addItem = item => {
@@ -18,6 +23,9 @@ exports.addItem = item => {
     `;
 
     items.appendChild(itemNode);
-    this.storage.push(item);
-    this.save();
 }
+
+this.storage.forEach( item => {
+    this.addItem(item);
+})
+

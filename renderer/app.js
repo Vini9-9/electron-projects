@@ -46,6 +46,7 @@ addItem.addEventListener('click', () => {
 ipcRenderer.on('new-item-success', (e, newItem) => {
     console.log(newItem);
     items.addItem(newItem);
+    items.addItemToStorage(newItem);
     toggleModalButtons();
     itemUrl.value = '';
     itemUrl.focus();
